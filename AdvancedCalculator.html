@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Calculator</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+
+        .calculator {
+            background: #fff;
+            color: #333;
+            padding: 60px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            margin: 0px 10px;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        #display {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            text-align: right;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .button-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        button {
+            padding: 15px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background: #1e3c72;
+            color: white;
+        }
+
+        button:hover {
+            background: #2a5298;
+        }
+
+        button.clear {
+            background: #e74c3c;
+        }
+
+        button.clear:hover {
+            background: #c0392b;
+        }
+
+        button.equals {
+            background: #27ae60;
+        }
+
+        button.equals:hover {
+            background: #1e8449;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h1>Advanced Calculator</h1>
+        <input type="text" id="display" readonly>
+        <div class="button-container">
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button onclick="appendToDisplay('/')">÷</button>
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button onclick="appendToDisplay('*')">×</button>
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button onclick="appendToDisplay('-')">−</button>
+            <button onclick="appendToDisplay('0')">0</button>
+            <button onclick="appendToDisplay('.')">.</button>
+            <button onclick="appendToDisplay('+')">+</button>
+            <button class="equals" onclick="calculateResult()">=</button>
+            <button onclick="appendToDisplay('**')">x²</button>
+            <button onclick="appendToDisplay('Math.sqrt(')">√</button>
+            <button onclick="appendToDisplay('%')">%</button>
+            <button class="clear" onclick="clearDisplay()">C</button>
+        </div>
+    </div>
+    <script>
+        const display = document.getElementById("display");
+
+        function appendToDisplay(value) {
+            display.value += value;
+        }
+
+        function clearDisplay() {
+            display.value = "";
+        }
+
+        function calculateResult() {
+            try {
+                display.value = eval(display.value);
+            } catch {
+                display.value = "Error";
+            }
+        }
+    </script>
+</body>
+</html>
